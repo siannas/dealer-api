@@ -10,6 +10,17 @@ class Kendaraan extends Model
 
     public $timestamps = false;
 
+    protected $attributes = [
+        'terjual' => null, //new \DateTime()->format('c'),
+    ];
+
+    protected $casts = [
+        'terjual' => 'datetime',
+        "warna" => 'string', 
+        "harga" => 'string',
+        "terjual" => 'string',  
+    ];
+
     protected $fillable = [
         "tahun keluaran", 
         "warna", 

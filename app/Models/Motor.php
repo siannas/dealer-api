@@ -3,19 +3,28 @@
 namespace App\Models;
 
 use App\Models\Kendaraan;
-
-// class MotorProperties 
-// {
-//     "mesin";
-//     "tipe suspensi";
-//     "tipe transmisi";
-// }
+use App\Enums\TipeKendaraan;
 
 class Motor extends Kendaraan
 {
     function __construct(array $attributes = array())
     {
-        array_push($this->fillable, "motor");
+        $this->attributes = array_merge($attributes, [
+            'tipe kendaraan' => TipeKendaraan::MOTOR,
+        ]);
+
+        $this->mergeFillable([
+            'mesin',
+            'tipe suspensi',
+            'tipe transmisi',
+        ]);
+
+        $this->mergeCasts([
+            'mesin' => 'string',
+            'tipe suspensi' => 'string',
+            'tipe transmisi' => 'string',
+            'tipe kendaraan' => 'int',
+        ]);
 
         parent::__construct($attributes);
     }

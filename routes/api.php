@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('/login', [\App\Services\Login::class, 'index']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/stok', [\App\Services\GetStokKendaraan::class, 'index']);
+    Route::get('/penjualan', [\App\Services\GetPenjualanKendaraan::class, 'index']);
+    Route::get('/laporan', [\App\Services\GetLaporanPenjualanKendaraan::class, 'index']);
 });

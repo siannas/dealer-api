@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Kendaraan;
 use App\Models\Motor;
+use App\Models\Mobil;
 
 class coba extends Command
 {
@@ -52,7 +53,30 @@ class coba extends Command
         //     ]
         // ]);
 
-        // $motor = Motor::create([
+        $motor = Motor::create([
+            "tahun keluaran" => 2022, 
+            "warna" => "kuning", 
+            "harga" => 9924012,
+            // "terjual" => null, //$now->format('c'),
+            "mesin" => "DOHC",
+            "tipe suspensi" => "Double Wishbone",
+            "tipe transmisi" => "Sliding Mesh",
+        ]);
+
+        
+        $mobil = Mobil::create([
+            "tahun keluaran" => 2022, 
+            "warna" => "kuning", 
+            "harga" => 9924012,
+            // "terjual" => null, //$now->format('c'),
+            "mesin" => "DOHC",
+            "kapasitas penumpang" => 4,
+            "tipe" => "SUV",
+        ]);
+
+        // $motor = new Mobil();
+        // $motor["tahun keluaran"] = 1999;
+        // $motor["warna 2"] = "hitam";
         //     "tahun keluaran" => 2022, 
         //     "warna" => "kuning", 
         //     "harga" => 9924012,
@@ -64,7 +88,12 @@ class coba extends Command
         //     ]
         // ]);
 
-        $motor = Motor::first();
-        echo $motor->motor;
+        // $motor = Motor::first();
+        // var_dump($motor);
+        // $motor->save();
+        echo $mobil;
+
+        // $kendaraan = Kendaraan::first();
+        // echo get_class( $kendaraan);
     }
 }

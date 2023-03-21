@@ -2,7 +2,7 @@
 
 namespace App\RepositoryInterfaces;
 
-interface KendaraanRepositoryInterface 
+interface KendaraanRepository 
 {
     public function getAllKendaraan();
     public function getKendaraanById($kendaraanId);
