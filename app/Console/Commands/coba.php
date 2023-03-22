@@ -53,26 +53,26 @@ class coba extends Command
         //     ]
         // ]);
 
-        $motor = Motor::create([
-            "tahun keluaran" => 2022, 
-            "warna" => "kuning", 
-            "harga" => 9924012,
-            // "terjual" => null, //$now->format('c'),
-            "mesin" => "DOHC",
-            "tipe suspensi" => "Double Wishbone",
-            "tipe transmisi" => "Sliding Mesh",
-        ]);
+        // $motor = Motor::create([
+        //     "tahun keluaran" => 2022, 
+        //     "warna" => "kuning", 
+        //     "harga" => 9924012,
+        //     // "terjual" => null, //$now->format('c'),
+        //     "mesin" => "DOHC",
+        //     "tipe suspensi" => "Double Wishbone",
+        //     "tipe transmisi" => "Sliding Mesh",
+        // ]);
 
         
-        $mobil = Mobil::create([
-            "tahun keluaran" => 2022, 
-            "warna" => "kuning", 
-            "harga" => 9924012,
-            // "terjual" => null, //$now->format('c'),
-            "mesin" => "DOHC",
-            "kapasitas penumpang" => 4,
-            "tipe" => "SUV",
-        ]);
+        // $mobil = Mobil::create([
+        //     "tahun keluaran" => 2022, 
+        //     "warna" => "kuning", 
+        //     "harga" => 9924012,
+        //     // "terjual" => null, //$now->format('c'),
+        //     "mesin" => "DOHC",
+        //     "kapasitas penumpang" => 4,
+        //     "tipe" => "SUV",
+        // ]);
 
         // $motor = new Mobil();
         // $motor["tahun keluaran"] = 1999;
@@ -91,9 +91,10 @@ class coba extends Command
         // $motor = Motor::first();
         // var_dump($motor);
         // $motor->save();
-        echo $mobil;
+        // echo $mobil;
 
-        // $kendaraan = Kendaraan::first();
+        $kendaraan = Kendaraan::first();
+        echo $kendaraan->terjual;
         // echo get_class( $kendaraan);
     }
 }

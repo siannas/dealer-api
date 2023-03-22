@@ -18,7 +18,6 @@ class Kendaraan extends Model
         'terjual' => 'datetime',
         "warna" => 'string', 
         "harga" => 'string',
-        "terjual" => 'string',  
     ];
 
     protected $fillable = [

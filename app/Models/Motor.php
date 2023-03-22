@@ -2,21 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Kendaraan;
 use App\Enums\TipeKendaraan;
 
 class Motor extends Kendaraan
 {
+    use HasFactory;
+
     function __construct(array $attributes = array())
     {
-        $this->attributes = array_merge($attributes, [
-            'tipe kendaraan' => TipeKendaraan::MOTOR,
-        ]);
+        $attributes['tipe kendaraan'] = TipeKendaraan::MOTOR;
 
         $this->mergeFillable([
             'mesin',
             'tipe suspensi',
             'tipe transmisi',
+            "tipe kendaraan",
         ]);
 
         $this->mergeCasts([

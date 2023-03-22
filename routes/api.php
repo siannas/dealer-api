@@ -20,8 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [\App\Services\Login::class, 'index']);
 
+Route::get('/laporan', [\App\Services\GetLaporanPenjualanKendaraan::class, 'index']);
+
 Route::middleware('auth:api')->group(function () {
     Route::get('/stok', [\App\Services\GetStokKendaraan::class, 'index']);
     Route::get('/penjualan', [\App\Services\GetPenjualanKendaraan::class, 'index']);
-    Route::get('/laporan', [\App\Services\GetLaporanPenjualanKendaraan::class, 'index']);
+    
 });

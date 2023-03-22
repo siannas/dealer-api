@@ -3,11 +3,10 @@
 namespace App\Services;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use App\RepositoryInterfaces\KendaraanRepository as KendaraanRepositoryInterface;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Collection;
 
 class GetStokKendaraan
 {
@@ -20,9 +19,26 @@ class GetStokKendaraan
 
     public function index(Request $request) : JsonResponse
     {
+        $rawdata = $this->kendaraanRepo->getStok();
+
+        $data = ["total" => 0];
+
+        foreach ($rawdata as $item) {
+            $key = match ($item->_id) {
+                1 => 'motor',
+                2 => 'mobil',
+                default => null,
+            };
+
+            if($key == null) continue;
+
+            $data[$key] = $item;
+            $data["total"] += $item->count;
+        }
+
         return response()->json(
-            $this->kendaraanRepo->getStok(),
-            Response::HTTP_CREATED
+            $data,
+            200
         );
     }
 }

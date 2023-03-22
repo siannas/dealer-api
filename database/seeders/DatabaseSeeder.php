@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Motor;
+use App\Models\Mobil;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +20,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@gmail.com',
         ])->save();
+
+        Motor::factory()->count(39)->create();
+        Mobil::factory()->count(27)->create();
+
+        Motor::factory()->count(7)->create([
+            'terjual' => null
+        ]);
+
+        Mobil::factory()->count(3)->create([
+            'terjual' => null
+        ]);
     }
 }

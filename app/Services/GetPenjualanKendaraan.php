@@ -18,9 +18,27 @@ class GetPenjualanKendaraan
 
     public function index(Request $request) : JsonResponse
     {
+        $rawdata = $this->kendaraanRepo->getPenjualanKendaraan();
+
+        $data = ["total" => 0, "total revenue" => 0];
+
+        foreach ($rawdata as $item) {
+            $key = match ($item->_id) {
+                1 => 'motor',
+                2 => 'mobil',
+                default => null,
+            };
+
+            if($key == null) continue;
+
+            $data[$key] = $item;
+            $data["total"] += $item->count;
+            $data["total revenue"] += $item->revenue;
+        }
+
         return response()->json(
-            $this->kendaraanRepo->getAllKendaraan(),
-            Response::HTTP_CREATED
+            $data,
+            200
         );
     }
 }

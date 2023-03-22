@@ -18,9 +18,29 @@ class GetLaporanPenjualanKendaraan
 
     public function index(Request $request) : JsonResponse
     {
+        $dateStart = $request->dateStart ?: now()->format('Y-m-d');
+        $dateDiff = $request->dateDiff ?: 7;
+        $tipeKendaraan = $request->tipeKendaraan ?: [1, 2];
+        $date = new \DateTime($dateStart);
+
+        $rawdata = $this->kendaraanRepo->getStatistikPenjualan( $dateStart , $dateDiff, $tipeKendaraan);
+
+        $data = ["total" => 0, "total revenue" => 0, "detil" => []];
+
+        foreach ($rawdata as $item) {
+            $item['date start'] = $date->format('Y-m-d');
+            $date->modify("+".($dateDiff-1)." day");
+            $item['date end'] = $date->format('Y-m-d');
+            $date->modify("+1 day");
+            
+            array_push($data["detil"], $item);
+            $data["total"] += $item->count;
+            $data["total revenue"] += $item->revenue;
+        }
+
         return response()->json(
-            $this->kendaraanRepo->getAllKendaraan(),
-            Response::HTTP_CREATED
+            $data,
+            200
         );
     }
 }
