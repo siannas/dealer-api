@@ -14,6 +14,7 @@ class LaporanPenjualanTest extends TestCase
 {
     public function testLaporanPenjualanTest()
     {
+        Artisan::call('migrate:fresh');
         Artisan::call('db:seed');
 
         $user = User::factory()->create();

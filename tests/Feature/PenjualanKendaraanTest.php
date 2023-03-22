@@ -14,6 +14,7 @@ class PenjualanKendaraanTest extends TestCase
 {
     public function testSuccessfulGetStokKendaraan()
     {
+        Artisan::call('migrate:fresh');
         Artisan::call('db:seed');
 
         $user = User::factory()->create();

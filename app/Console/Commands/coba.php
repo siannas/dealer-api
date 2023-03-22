@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\Kendaraan;
 use App\Models\Motor;
 use App\Models\Mobil;
+use Illuminate\Support\Facades\DB;
 
 class coba extends Command
 {
@@ -93,8 +94,12 @@ class coba extends Command
         // $motor->save();
         // echo $mobil;
 
-        $kendaraan = Kendaraan::first();
-        echo $kendaraan->terjual;
+        // $kendaraan = Kendaraan::first();
+        // echo $kendaraan->terjual;
+
         // echo get_class( $kendaraan);
+
+        
+        echo "udah";
     }
 }

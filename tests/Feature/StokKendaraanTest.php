@@ -9,18 +9,14 @@ use App\Models\User;
 use App\Models\Motor;
 use App\Models\Mobil;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
 
 class StokKendaraanTest extends TestCase
 {
     public function testSuccessfulGetStokKendaraan()
     {
-        Motor::factory()->count(7)->create([
-            'terjual' => null
-        ]);
-
-        Mobil::factory()->count(3)->create([
-            'terjual' => null
-        ]);
+        Artisan::call('migrate:fresh');
+        Artisan::call('db:seed');
 
         $user = User::factory()->create();
         $this->actingAs($user, 'api');
