@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
@@ -7,6 +9,7 @@ use App\RepositoryInterfaces\KendaraanRepository as KendaraanRepositoryInterface
 use App\Models\Kendaraan;
 use App\Models\Motor;
 use App\Models\Mobil;
+use Jenssegers\Mongodb\Collection as JenssegersCollection;
 
 class KendaraanRepository implements KendaraanRepositoryInterface
 {
@@ -36,7 +39,7 @@ class KendaraanRepository implements KendaraanRepositoryInterface
 
     public function getStok() : Collection
     {
-        return Kendaraan::raw(function($collection) {
+        return Kendaraan::raw(function(JenssegersCollection $collection) {
             return $collection->aggregate([
                 [
                     '$match'=> ['terjual' => null]
@@ -54,7 +57,7 @@ class KendaraanRepository implements KendaraanRepositoryInterface
 
     public function getPenjualanKendaraan() : Collection
     {
-        return Kendaraan::raw(function($collection) {
+        return Kendaraan::raw(function(JenssegersCollection $collection) {
             return $collection->aggregate([
                 [
                     '$match'=> ['terjual' => ['$ne' => null] ] 
@@ -71,7 +74,7 @@ class KendaraanRepository implements KendaraanRepositoryInterface
         });
     }
 
-    private function dataHelper()
+    private function dataHelper() : array
     {
         return [
             'dateStart' => strtotime($this->dateStart) * 1000,
@@ -86,7 +89,7 @@ class KendaraanRepository implements KendaraanRepositoryInterface
         $this->dateDiff = $dateDiff;
         $this->tipeKendaraan = $tipeKendaraan;
 
-        return Kendaraan::raw(function($collection) {
+        return Kendaraan::raw(function(JenssegersCollection $collection) {
 
             $data = KendaraanRepository::dataHelper();
 

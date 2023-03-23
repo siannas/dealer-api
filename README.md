@@ -59,7 +59,7 @@ Testing terdiri dari uji fitur pada API endpoint _/api/login_, _/api/stok_, _/ap
     ##### Example cURL
 
     > ```javascript
-    >   curl -X POST -H "Content-Type: application/json" --data-raw @post.json http://localhost:8000/api/login
+    >   curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" --data-raw @post.json http://localhost:8000/api/login
     > ```
 
     </details>
@@ -91,7 +91,7 @@ Testing terdiri dari uji fitur pada API endpoint _/api/login_, _/api/stok_, _/ap
     ##### Example cURL
 
     > ```javascript
-    >   curl -X GET -H "Content-Type: application/json" http://localhost:8000/api/stok?token=my-token
+    >   curl -X GET -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8000/api/stok?token=my-token
     > ```
 
     </details>
@@ -127,7 +127,7 @@ Testing terdiri dari uji fitur pada API endpoint _/api/login_, _/api/stok_, _/ap
     ##### Example cURL
 
     > ```javascript
-    >   curl -X GET -H "Content-Type: application/json" http://localhost:8000/api/penjualan?token=my-token
+    >   curl -X GET -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8000/api/penjualan?token=my-token
     > ```
 
     </details>
@@ -171,7 +171,7 @@ Testing terdiri dari uji fitur pada API endpoint _/api/login_, _/api/stok_, _/ap
     ##### Example cURL
 
     > ```javascript
-    >   curl -X GET -H "Content-Type: application/json" --data-raw @get.json http://localhost:8000/api/laporan?token=my-token
+    >   curl -X GET -H "Content-Type: application/json" -H "Accept: application/json" --data-raw @get.json http://localhost:8000/api/laporan?token=my-token
     > ```
 
     </details>
